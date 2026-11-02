@@ -2,7 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
-const code = fs.readFileSync(require('node:path').join(__dirname, '../banner/astra.js'), 'utf8');
+const code = fs.readFileSync(require('node:path').join(__dirname, '../banner/astra-banner.js'), 'utf8');
 
 function browser(options = {}) {
   const nodes = [], events = {}, stored = new Map(options.dismissed ? [['nana-book-banner-dismissed:astra-book-198213028', '1']] : []);
