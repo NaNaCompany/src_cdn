@@ -70,6 +70,10 @@ test('moves above bottom navigation and reserves the additional space', () => {
 test('visible modal hides banner and releases space', () => {
   const b = browser({modal:true}); assert.equal(b.host().style.display, 'none'); assert.equal(b.document.getElementById('nana-book-banner-space').style.height, '0px');
 });
+test('clears a taller existing advertising anchor instead of being covered', () => {
+  const nav = { position:'fixed', parentElement:null, getBoundingClientRect() { return {height:250,bottom:800,top:550}; } };
+  const b = browser({nav}); assert.match(b.host().style.bottom, /266px/);
+});
 test('waits for body readiness; no duplicates from concurrent initial scripts', () => {
   const b = browser({loading:true}); assert.equal(b.host(), undefined); b.events.DOMContentLoaded(); assert.ok(b.host()); b.events.DOMContentLoaded(); assert.equal(b.nodes.filter(n=>n.id==='nana-book-banner').length,1);
 });

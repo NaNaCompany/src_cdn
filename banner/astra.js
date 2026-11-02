@@ -77,7 +77,7 @@
             for (var current = el; current && current !== document.body; current = current.parentElement) {
               if (current === host || current === spacer) break;
               var computed = getComputedStyle(current), rect = current.getBoundingClientRect();
-              if ((computed.position === 'fixed' || computed.position === 'sticky') && rect.height > 0 && rect.height <= 180 && rect.bottom >= viewportHeight - 12) offset = Math.max(offset, viewportHeight - rect.top + 6);
+              if ((computed.position === 'fixed' || computed.position === 'sticky') && rect.height > 0 && rect.height <= Math.min(320, viewportHeight * 0.5) && rect.bottom >= viewportHeight - 12) offset = Math.max(offset, viewportHeight - rect.top + 6);
             }
           });
         });
