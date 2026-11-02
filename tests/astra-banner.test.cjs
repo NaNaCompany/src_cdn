@@ -28,7 +28,7 @@ function browser(options = {}) {
   if (options.iframe) window.top = {};
   const context = { document, window, location: { hostname: options.hostname || 'nanalab.kr', pathname: options.path || '/dll-directory/en/dll/test.dll/' },
     sessionStorage: { getItem(key) { if (options.storageBlocked) throw Error('blocked'); return stored.get(key); }, setItem(key, value) { if (options.storageBlocked) throw Error('blocked'); stored.set(key, value); } },
-    MutationObserver: class { observe() {} disconnect() {} }, requestAnimationFrame(callback) { events.frame = callback; return 1; }, cancelAnimationFrame() {},
+    MutationObserver: class { constructor(callback) { events.mutation = callback; } observe() {} disconnect() {} }, requestAnimationFrame(callback) { events.frame = callback; return 1; }, cancelAnimationFrame() {},
     getComputedStyle(node) { return { position: node.position || 'static' }; }
   };
   vm.createContext(context);
@@ -80,4 +80,8 @@ test('waits for body readiness; no duplicates from concurrent initial scripts', 
 test('mobile editing hides and focusout restores the banner', () => {
   const b = browser({width:375}); b.document.activeElement = {matches(){return true;}}; b.events.focusin(); b.events.frame(); assert.equal(b.host().style.display,'none');
   b.document.activeElement = null; b.events.focusout(); b.events.frame(); assert.equal(b.host().style.display,'block');
+});
+test('external inline-style changes relayout; own style writes cannot loop', () => {
+  const b=browser();b.events.mutation([{target:b.host()},{target:b.document.getElementById('nana-book-banner-space')}]);assert.equal(b.events.frame,undefined);
+  b.events.mutation([{target:{}}]);assert.equal(typeof b.events.frame,'function');
 });

@@ -89,8 +89,12 @@
       host.style.setProperty('bottom', 'calc(' + (10 + Math.ceil(offset)) + 'px + env(safe-area-inset-bottom,0px))', 'important');
       spacer.style.height = hidden ? '0px' : (66 + Math.ceil(offset)) + 'px';
     }
-    var observer = new MutationObserver(schedule);
-    observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['open', 'aria-modal', 'class', 'hidden'] });
+    var observer = new MutationObserver(function (records) {
+      // Ad anchors can expand/collapse by changing inline styles. Ignore our own
+      // layout writes so observing those style changes cannot create a loop.
+      if (records.some(function (record) { return record.target !== host && record.target !== spacer; })) schedule();
+    });
+    observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['open', 'aria-modal', 'class', 'hidden', 'style'] });
     ['resize', 'scroll', 'focusin', 'focusout', 'fullscreenchange'].forEach(function (name) { window.addEventListener(name, schedule, { passive: true }); });
     if (window.visualViewport) window.visualViewport.addEventListener('resize', schedule);
     close.addEventListener('click', function () {
