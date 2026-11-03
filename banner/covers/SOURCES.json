@@ -1,0 +1,1000 @@
+{
+  "source": "https://bhban.kr/api/books.json",
+  "checked_at": "2026-11-03",
+  "usage": "Book cover thumbnails used only to advertise the author’s own books at the author’s explicit request. Copyright remains with the respective publishers and cover creators; no open license or onward reuse grant is claimed.",
+  "modifications": "None. Downloaded the bookstore-provided M thumbnail; browser scales proportionally with object-fit:contain.",
+  "books": [
+    {
+      "id": "books-35",
+      "title": "스스로 일하는 GPT 아스트라",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000221652926",
+        "yes24": "https://www.yes24.com/product/goods/198213028"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000221652926",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/product/goods/198213028",
+          "title": "스스로 일하는 GPT 아스트라 | 반병현 | 생능북스 - 예스24",
+          "bytes": 364652
+        }
+      },
+      "cover": "books-35.jpg",
+      "cover_source": "https://image.yes24.com/goods/198213028/M",
+      "cover_size": [
+        160,
+        220
+      ],
+      "cover_bytes": 9668,
+      "cover_sha256": "29f46f2df8b8d915754cd1d5a0221e7e79843b11100310d44fa97ce8263751d9"
+    },
+    {
+      "id": "books-34",
+      "title": "작가의 프롬프트 (삽화편)",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000221230561",
+        "yes24": "https://www.yes24.com/product/goods/195817748"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000221230561",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/product/goods/195817748",
+          "title": "작가의 프롬프트 - AI로 제작한 삽화편 | 반병현 | BOOKK(부크크) - 예스24",
+          "bytes": 340342
+        }
+      },
+      "cover": "books-34.jpg",
+      "cover_source": "https://image.yes24.com/goods/195817748/M",
+      "cover_size": [
+        155,
+        220
+      ],
+      "cover_bytes": 7878,
+      "cover_sha256": "648737e9edd258855a1726b190bc128ae7628f4d34c5b154d33361a332d7272e"
+    },
+    {
+      "id": "books-33",
+      "title": "딸깍! 제미나이 & 노트북",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000220931172",
+        "yes24": "https://www.yes24.com/product/goods/195238254"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000220931172",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/product/goods/195238254",
+          "title": "딸깍! 제미나이 &amp; 노트북 | 반병현 | 생능북스 - 예스24",
+          "bytes": 370513
+        }
+      },
+      "cover": "books-33.jpg",
+      "cover_source": "https://image.yes24.com/goods/195238254/M",
+      "cover_size": [
+        160,
+        220
+      ],
+      "cover_bytes": 8994,
+      "cover_sha256": "1ab085a63e5c380129ebf9f58df73fac0347cfd3d74ffe8c19a5b01e1f231116"
+    },
+    {
+      "id": "books-32",
+      "title": "딸깍! 바이브코딩",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000219610166",
+        "yes24": "https://www.yes24.com/product/goods/184675866"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000219610166",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/product/goods/184675866",
+          "title": "딸깍! 바이브 코딩 by 안티그래비티 | 반병현 | 생능북스 - 예스24",
+          "bytes": 385579
+        }
+      },
+      "cover": "books-32.jpg",
+      "cover_source": "https://image.yes24.com/goods/184675866/M",
+      "cover_size": [
+        160,
+        220
+      ],
+      "cover_bytes": 9874,
+      "cover_sha256": "98627d62fbf240bead9e20471afaa7631b69c5111a1a0ff3b72732f1ff528f68"
+    },
+    {
+      "id": "books-31",
+      "title": "AI 이후의 인간",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000217919085",
+        "yes24": "https://www.yes24.com/Product/Goods/153821283"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000217919085",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/153821283",
+          "title": "AI 이후의 인간 | 반병현 | 생능북스 - 예스24",
+          "bytes": 380235
+        }
+      },
+      "cover": "books-31.jpg",
+      "cover_source": "https://image.yes24.com/goods/153821283/M",
+      "cover_size": [
+        144,
+        220
+      ],
+      "cover_bytes": 7925,
+      "cover_sha256": "e3515e0c5c5ed4355ebdb0ccb6b0029b898216220225d0a5d70c243dbd5b265c"
+    },
+    {
+      "id": "books-30",
+      "title": "소프트웨어 리터러시",
+      "stores": {
+        "kyobo": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000011031315",
+        "yes24": "https://www.yes24.com/product/goods/142610839"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000011031315",
+          "title": "소프트웨어 리터러시(수정판)\n     | 김대수\n    \n    \n     | 생능출판\n    -\n    \n    \n        \n        \n        교보ebook",
+          "bytes": 263339
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/product/goods/142610839",
+          "title": "[전자책] 소프트웨어 리터러시(수정판) | 김대수 | 생능출판사 - 예스24",
+          "bytes": 297690
+        }
+      },
+      "cover": "books-30.jpg",
+      "cover_source": "https://image.yes24.com/goods/142610839/M",
+      "cover_size": [
+        161,
+        220
+      ],
+      "cover_bytes": 11097,
+      "cover_sha256": "36644656ae476757deb152ce88be84af4457c89c0ed3b0f4acd9303042a9e64e"
+    },
+    {
+      "id": "books-29",
+      "title": "코파일럿",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000212725343",
+        "yes24": "https://www.yes24.com/Product/Goods/125480842"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000212725343",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/125480842",
+          "title": "코파일럿 | 반병현 | 생능북스 - 예스24",
+          "bytes": 365178
+        }
+      },
+      "cover": "books-29.jpg",
+      "cover_source": "https://image.yes24.com/goods/125480842/M",
+      "cover_size": [
+        160,
+        220
+      ],
+      "cover_bytes": 6713,
+      "cover_sha256": "a33475edd675aac3e33a8b08ddc94c5e83978ea3d4d8953ff05d93677a05bfd6"
+    },
+    {
+      "id": "books-28",
+      "title": "챗GPT 수능독해",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000212169752",
+        "yes24": "https://www.yes24.com/Product/Goods/124769179"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000212169752",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/124769179",
+          "title": "수능독해 | 김지애 | 생능북스 - 예스24",
+          "bytes": 368206
+        }
+      },
+      "cover": "books-28.jpg",
+      "cover_source": "https://image.yes24.com/goods/124769179/M",
+      "cover_size": [
+        155,
+        220
+      ],
+      "cover_bytes": 10201,
+      "cover_sha256": "6484a82ea7331c2356ffedb05faf18fcc649384d5585f5eaa8c933da90613b11"
+    },
+    {
+      "id": "books-26",
+      "title": "나보다 똑똑한 AI와 사는 법",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000211656067",
+        "yes24": "https://www.yes24.com/Product/Goods/124129560"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000211656067",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/124129560",
+          "title": "나보다 똑똑한 AI와 사는 법 | 반병현 | 북트리거 - 예스24",
+          "bytes": 368193
+        }
+      },
+      "cover": "books-26.jpg",
+      "cover_source": "https://image.yes24.com/goods/124129560/M",
+      "cover_size": [
+        150,
+        220
+      ],
+      "cover_bytes": 13154,
+      "cover_sha256": "0dffb5ee5ab6e793ae58d9f68cc99eb5776968a82a7e469911dee9fe6c19f309"
+    },
+    {
+      "id": "books-25",
+      "title": "프롬프트 엔지니어링",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000209512470",
+        "yes24": "https://www.yes24.com/Product/Goods/122661870"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000209512470",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/122661870",
+          "title": "프롬프트 엔지니어링 | 반병현 | 생능북스 - 예스24",
+          "bytes": 353184
+        }
+      },
+      "cover": "books-25.jpg",
+      "cover_source": "https://image.yes24.com/goods/122661870/M",
+      "cover_size": [
+        151,
+        220
+      ],
+      "cover_bytes": 7142,
+      "cover_sha256": "a0dc8980d57834abf2af7b74b5e8a8ca373028cdc9caca452d521594066fe4ff"
+    },
+    {
+      "id": "books-24",
+      "title": "챗GPT 영어회화",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000208357873",
+        "yes24": "https://www.yes24.com/Product/Goods/121173595"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000208357873",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/121173595",
+          "title": "챗GPT 영어회화 | 반병현 | 생능북스 - 예스24",
+          "bytes": 381792
+        }
+      },
+      "cover": "books-24.jpg",
+      "cover_source": "https://image.yes24.com/goods/121173595/M",
+      "cover_size": [
+        152,
+        220
+      ],
+      "cover_bytes": 11107,
+      "cover_sha256": "d2488696b6708e61b02b58ad9423f70b1b08352193e4d374f0eb58dbefcc53b5"
+    },
+    {
+      "id": "books-23",
+      "title": "마음을 움직이는 보고서 작성법",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000202988695",
+        "yes24": "https://www.yes24.com/Product/Goods/119982982"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000202988695",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/119982982",
+          "title": "마음을 움직이는 보고서 작성법 | 김강욱 | 생능북스 - 예스24",
+          "bytes": 370198
+        }
+      },
+      "cover": "books-23.jpg",
+      "cover_source": "https://image.yes24.com/goods/119982982/M",
+      "cover_size": [
+        149,
+        220
+      ],
+      "cover_bytes": 9365,
+      "cover_sha256": "82630db51c6b8b0f7d84771b1b59ae83a0a7aff33c1f747fa4cd028b909fce93"
+    },
+    {
+      "id": "books-22",
+      "title": "챗GPT영어교실",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000202728693",
+        "yes24": "https://www.yes24.com/Product/Goods/119732698"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000202728693",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/119732698",
+          "title": "챗GPT 영어교실 | 반병현 | 생능북스 - 예스24",
+          "bytes": 376855
+        }
+      },
+      "cover": "books-22.jpg",
+      "cover_source": "https://image.yes24.com/goods/119732698/M",
+      "cover_size": [
+        155,
+        220
+      ],
+      "cover_bytes": 12675,
+      "cover_sha256": "5fa3f13c13847eb37730f2e7f4514ecc728e7bc83f0808b17eff99a9b52f2e15"
+    },
+    {
+      "id": "books-21",
+      "title": "GPT 노마드의 탄생",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000201335898",
+        "yes24": "https://www.yes24.com/Product/Goods/118059497"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000201335898",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/118059497",
+          "title": "챗GPT : GPT 노마드의 탄생 | 반병현 | 생능북스 - 예스24",
+          "bytes": 371206
+        }
+      },
+      "cover": "books-21.jpg",
+      "cover_source": "https://image.yes24.com/goods/118059497/M",
+      "cover_size": [
+        148,
+        220
+      ],
+      "cover_bytes": 10337,
+      "cover_sha256": "defac92384c83b6adb7b5b147c9df25bd1abe59d60148b1458f9d3c22012fd86"
+    },
+    {
+      "id": "books-20",
+      "title": "챗GPT",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000200861077",
+        "yes24": "https://www.yes24.com/Product/Goods/117246674"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000200861077",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/117246674",
+          "title": "챗GPT : 마침내 찾아온 특이점 | 반병현 | 생능북스 - 예스24",
+          "bytes": 374602
+        }
+      },
+      "cover": "books-20.jpg",
+      "cover_source": "https://image.yes24.com/goods/117246674/M",
+      "cover_size": [
+        148,
+        220
+      ],
+      "cover_bytes": 10084,
+      "cover_sha256": "24b47c8cc17ecdda4a1bda2d288b46b9d02d619280edf5f6719a4eaf7946b794"
+    },
+    {
+      "id": "books-19",
+      "title": "AI족집게 수능영단어",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000200661730",
+        "yes24": "https://www.yes24.com/Product/Goods/116904678"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000200661730",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/116904678",
+          "title": "AI 족집게 수능영단어 | AI교육연구회 | 생능북스 - 예스24",
+          "bytes": 345950
+        }
+      },
+      "cover": "books-19.jpg",
+      "cover_source": "https://image.yes24.com/goods/116904678/M",
+      "cover_size": [
+        220,
+        220
+      ],
+      "cover_bytes": 8473,
+      "cover_sha256": "9112e7bd62001a72661ac880ac7ea6de249614b069179fc93bea9a78799b2ca0"
+    },
+    {
+      "id": "books-18",
+      "title": "ChatGPT",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000200738583",
+        "yes24": "https://www.yes24.com/Product/Goods/116974514"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000200738583",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/116974514",
+          "title": "ChatGPT | 반병현 | BOOKK(부크크) - 예스24",
+          "bytes": 348741
+        }
+      },
+      "cover": "books-18.jpg",
+      "cover_source": "https://image.yes24.com/goods/116974514/M",
+      "cover_size": [
+        147,
+        220
+      ],
+      "cover_bytes": 3911,
+      "cover_sha256": "fd20ee809c5beb02d85b4da9b7d3edb7e8b9379a7210871685d367e684fac175"
+    },
+    {
+      "id": "books-17",
+      "title": "포토샵 마스터 클래스",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000200616982",
+        "yes24": "https://www.yes24.com/Product/Goods/116758227"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000200616982",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/116758227",
+          "title": "포토샵 마스터 클래스 | 정규민 | 생능북스 - 예스24",
+          "bytes": 369740
+        }
+      },
+      "cover": "books-17.jpg",
+      "cover_source": "https://image.yes24.com/goods/116758227/M",
+      "cover_size": [
+        158,
+        220
+      ],
+      "cover_bytes": 9765,
+      "cover_sha256": "fac1eea9e5aed930be532d3cfcf272f999845b6b470d71f049ef06c94eaf675a"
+    },
+    {
+      "id": "books-16",
+      "title": "비전공이지만 개발자로 먹고삽니다",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000200326244",
+        "yes24": "https://www.yes24.com/product/goods/115621142"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000200326244",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/product/goods/115621142",
+          "title": "비전공이지만 개발자로 먹고삽니다 | 반병현 | 생능북스 - 예스24",
+          "bytes": 379471
+        }
+      },
+      "cover": "books-16.jpg",
+      "cover_source": "https://image.yes24.com/goods/115621142/M",
+      "cover_size": [
+        150,
+        220
+      ],
+      "cover_bytes": 6567,
+      "cover_sha256": "c83d6af522ddfa1a932fd2c21f7f9015c796f80f028b2b2be4c9779bdb5ce3a8"
+    },
+    {
+      "id": "books-14",
+      "title": "가상자산 수업",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000061351299",
+        "yes24": "https://www.yes24.com/Product/Goods/109708603"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000061351299",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/109708603",
+          "title": "돈이 복사되는 가상자산 수업 | 반병현 | 생능북스 - 예스24",
+          "bytes": 368010
+        }
+      },
+      "cover": "books-14.jpg",
+      "cover_source": "https://image.yes24.com/goods/109708603/M",
+      "cover_size": [
+        148,
+        220
+      ],
+      "cover_bytes": 8612,
+      "cover_sha256": "56484e2751b048408cf1645652597c5c140be84bfab8294f32cc981833c829a3"
+    },
+    {
+      "id": "books-13",
+      "title": "142가지 데이터셋",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000001076024",
+        "yes24": "https://www.yes24.com/Product/Goods/107036705"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000001076024",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/107036705",
+          "title": "142가지 데이터셋 | 반병현 | 생능북스 - 예스24",
+          "bytes": 364258
+        }
+      },
+      "cover": "books-13.jpg",
+      "cover_source": "https://image.yes24.com/goods/107036705/M",
+      "cover_size": [
+        164,
+        220
+      ],
+      "cover_bytes": 7529,
+      "cover_sha256": "6fe7618f843ecb75fe61e33829e236ffea1ba966d0be9526d09b7cc55666e0b0"
+    },
+    {
+      "id": "books-12",
+      "title": "HTML, CSS, 자바스크립트",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000001076025",
+        "yes24": "https://www.yes24.com/Product/Goods/107010853"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000001076025",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/107010853",
+          "title": "HTML+CSS+자바스크립트 | 반병현 | 생능북스 - 예스24",
+          "bytes": 374604
+        }
+      },
+      "cover": "books-12.jpg",
+      "cover_source": "https://image.yes24.com/goods/107010853/M",
+      "cover_size": [
+        162,
+        220
+      ],
+      "cover_bytes": 8023,
+      "cover_sha256": "4cf1effe8c360d80fc4440f62342f1026280cd763424ba43c086b591c6a570f2"
+    },
+    {
+      "id": "books-10",
+      "title": "101가지 컴퓨터 활용팁",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000001075989",
+        "yes24": "https://www.yes24.com/product/goods/102593399"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000001075989",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/product/goods/102593399",
+          "title": "비전공자가 업무에서 자주 물어보는 101가지 컴퓨터 활용팁 | 반병현 | 생능출판사 - 예스24",
+          "bytes": 349806
+        }
+      },
+      "cover": "books-10.jpg",
+      "cover_source": "https://image.yes24.com/goods/102593399/M",
+      "cover_size": [
+        172,
+        220
+      ],
+      "cover_bytes": 10961,
+      "cover_sha256": "7693006cbd187529e498c6768104e17b87ad592094d15b1f8b048ff23307c119"
+    },
+    {
+      "id": "books-9",
+      "title": "내 자산 자동으로 관리하기",
+      "stores": {
+        "kyobo": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000003574876",
+        "yes24": "https://www.yes24.com/product/goods/104492363"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000003574876",
+          "title": "내 자산 자동으로 관리하기\n     | 반병현\n    \n    \n     | 생능출판\n    -\n    \n    \n        \n        \n        교보ebook",
+          "bytes": 254331
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/product/goods/104492363",
+          "title": "[전자책] 내 자산 자동으로 관리하기 | 반병현 | 생능출판사 - 예스24",
+          "bytes": 294040
+        }
+      },
+      "cover": "books-9.jpg",
+      "cover_source": "https://image.yes24.com/goods/104492363/M",
+      "cover_size": [
+        148,
+        220
+      ],
+      "cover_bytes": 10581,
+      "cover_sha256": "a582239895051d6b965d88d5aa2a9b83a14a017d64d690aed87f1c307c7f1f9e"
+    },
+    {
+      "id": "books-8",
+      "title": "쉬운 딥러닝",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000001075983",
+        "yes24": "https://www.yes24.com/Product/Goods/99552196"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000001075983",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/99552196",
+          "title": "쉬운 딥러닝 | 반병현 | 생능북스 - 예스24",
+          "bytes": 373827
+        }
+      },
+      "cover": "books-8.jpg",
+      "cover_source": "https://image.yes24.com/goods/99552196/M",
+      "cover_size": [
+        173,
+        220
+      ],
+      "cover_bytes": 8376,
+      "cover_sha256": "e59a833bdca6c9a8991bc5edb43b197c0441d0cd84bc277331be6127d89a2ce5"
+    },
+    {
+      "id": "books-7",
+      "title": "6개월 치 업무를 하루 만에 끝내는 업무자동화",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000001075971",
+        "yes24": "https://www.yes24.com/Product/Goods/96360166"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000001075971",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/96360166",
+          "title": "6개월 치 업무를 하루 만에 끝내는 업무 자동화 | 반병현 | 생능출판사 - 예스24",
+          "bytes": 363593
+        }
+      },
+      "cover": "books-7.jpg",
+      "cover_source": "https://image.yes24.com/goods/96360166/M",
+      "cover_size": [
+        159,
+        220
+      ],
+      "cover_bytes": 8226,
+      "cover_sha256": "f0759ea80f39146e3ee3ec30d79e80ee13b7b4b19c03397a9c789d720f190066"
+    },
+    {
+      "id": "books-6",
+      "title": "공학자의 오경묵상",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000060613527",
+        "yes24": "https://www.yes24.com/Product/Goods/95590656"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000060613527",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/95590656",
+          "title": "공학자의 오경묵상 | 반병현 | BOOKK(부크크) - 예스24",
+          "bytes": 329220
+        }
+      },
+      "cover": "books-6.jpg",
+      "cover_source": "https://image.yes24.com/goods/95590656/M",
+      "cover_size": [
+        154,
+        220
+      ],
+      "cover_bytes": 4815,
+      "cover_sha256": "1c78b87f4edba893693060f8566107a6c0044822e5c1105538e58bab9fb2e7bd"
+    },
+    {
+      "id": "books-5",
+      "title": "나는 아직 잊힐 준비가 되지 않았어요",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000060612313",
+        "yes24": "https://www.yes24.com/Product/Goods/92154589"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000060612313",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/92154589",
+          "title": "나는 아직 잊힐 준비가 되지 않았어요 | 반병현 | BOOKK(부크크) - 예스24",
+          "bytes": 340275
+        }
+      },
+      "cover": "books-5.jpg",
+      "cover_source": "https://image.yes24.com/goods/92154589/M",
+      "cover_size": [
+        156,
+        220
+      ],
+      "cover_bytes": 5763,
+      "cover_sha256": "0819a0273fee0263a6b232949c8b0f947cc46d14d9c75ddc99ef6fdc02b3e667"
+    },
+    {
+      "id": "books-4",
+      "title": "공학자의 지혜묵상",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000060611595",
+        "yes24": "https://www.yes24.com/Product/Goods/90392271"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000060611595",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/90392271",
+          "title": "공학자의 지혜묵상 | 반병현 | BOOKK(부크크) - 예스24",
+          "bytes": 319041
+        }
+      },
+      "cover": "books-4.jpg",
+      "cover_source": "https://image.yes24.com/goods/90392271/M",
+      "cover_size": [
+        155,
+        220
+      ],
+      "cover_bytes": 6030,
+      "cover_sha256": "5be3e890b3907717d855042bbd3f975227fd852c95f3622e770f5be5b2306519"
+    },
+    {
+      "id": "books-2",
+      "title": "실전 민사소송법",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000060611461",
+        "yes24": "https://www.yes24.com/Product/Goods/90250538"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000060611461",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/90250538",
+          "title": "실전 민사소송법 | 반병현 | BOOKK(부크크) - 예스24",
+          "bytes": 340572
+        }
+      },
+      "cover": "books-2.jpg",
+      "cover_source": "https://image.yes24.com/goods/90250538/M",
+      "cover_size": [
+        152,
+        220
+      ],
+      "cover_bytes": 6698,
+      "cover_sha256": "706cbcc6c0145ec4a6de6deb3c0901fe2e11001b6d58f4fd50f1d34f07ebc319"
+    },
+    {
+      "id": "books-3",
+      "title": "코딩하는 공익",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000000810146",
+        "yes24": "https://www.yes24.com/product/goods/90081924"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000000810146",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/product/goods/90081924",
+          "title": "코딩하는 공익 | 반병현 | 세창미디어 - 예스24",
+          "bytes": 362054
+        }
+      },
+      "cover": "books-3.jpg",
+      "cover_source": "https://image.yes24.com/goods/90081924/M",
+      "cover_size": [
+        151,
+        220
+      ],
+      "cover_bytes": 11899,
+      "cover_sha256": "76788665af694e7552859625a1345afab2f03d98570ce1e81e6525aa847c03c3"
+    },
+    {
+      "id": "books-27",
+      "title": "카이스트 공부벌레들",
+      "stores": {
+        "kyobo": "https://product.kyobobook.co.kr/detail/S000000721696",
+        "yes24": "https://www.yes24.com/Product/Goods/8127931"
+      },
+      "author_source": "https://bhban.kr/books/",
+      "verification": {
+        "kyobo": {
+          "status": 200,
+          "final_url": "https://product.kyobobook.co.kr/detail/S000000721696",
+          "title": "",
+          "bytes": 0
+        },
+        "yes24": {
+          "status": 200,
+          "final_url": "https://www.yes24.com/Product/Goods/8127931",
+          "title": "카이스트 공부벌레들 | 임은지 | 살림Friends - 예스24",
+          "bytes": 342730
+        }
+      },
+      "cover": "books-27.jpg",
+      "cover_source": "https://image.yes24.com/goods/8127931/M",
+      "cover_size": [
+        149,
+        220
+      ],
+      "cover_bytes": 16001,
+      "cover_sha256": "397be57081427c177560969e3e395b5eaefb1667845bb54b64fd049544c1a8b5"
+    }
+  ]
+}

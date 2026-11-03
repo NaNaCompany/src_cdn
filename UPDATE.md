@@ -1,5 +1,15 @@
 # Update log
 
+## 2026-11-03 — Book covers and randomized two-store banner
+
+- Replaced the CSS icon with a real 28×38px proportional cover. Stored 32 bookstore-provided small thumbnails separately in `banner/covers/`, approximately 0.28MB in total. Full source URLs, SHA-256 hashes, dimensions, store links and authorization context are in `covers/SOURCES.json`.
+- Reduced the disclosure to 8px and increased the title to 15px (14px on narrow screens). Preserved the narrow banner, close/session dismissal, bottom navigation clearance, local-host restrictions and Astra practice exclusion.
+- Select a random book on each document/banner mount and independently select YES24 or Kyobo. Reroll the store every 5,000ms while visible and not being hovered or focused. All three links (cover/title/button) update together; no cover download or book change occurs on a store tick. Clear the timer on dismissal. Repeated random store choices are allowed.
+- Imported the author's current catalog, found two missing YES24 destinations and corrected the 404 YES24 link for 코딩하는 공익. 32 books have a two-store pair; four without a verified pair remain excluded, documented in the banner README. Kyobo product URLs are confirmed against the author catalog; ordinary Kyobo HTML responses were empty, so store-page visual verification is not claimed.
+- Component and stable-loader regression checks: 18 passed. Verified every configured cover file and hash, catalog selection, both store destinations, five-second timer, hover/focus/hidden pause, cleanup, session dismissal and existing host/layout guards.
+- Browser visual QA was attempted, but both existing-browser selection and in-app browser creation returned `Local browser use is disabled in Work settings`. Mobile/desktop rendering and actual store-click UI remain unverified for this revision.
+- This revision changes the central CDN only. Existing app embeds continue using the same stable loader URL; their four publisher integrations and source files are untouched.
+
 ## 2026-11-02 — Shared Astra book advertisement
 
 - Added `banner/astra.js`: a compact, closable floating book ad linking to the user-provided YES24 product page for 스스로 일하는 GPT 아스트라.

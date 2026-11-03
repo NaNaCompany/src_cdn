@@ -6,6 +6,8 @@ const code = fs.readFileSync(require('node:path').join(__dirname, '../banner/ast
 
 function browser(options = {}) {
   const nodes = [], events = {}, stored = new Map(options.dismissed ? [['nana-book-banner-dismissed:astra-book-198213028', '1']] : []);
+  const random = (options.random || [0, 0]).slice();
+  const math = Object.create(Math); math.random = () => random.length ? random.shift() : 0;
   const style = () => ({ setProperty(key, value) { this[key] = value; } });
   function element(tag) {
     const node = { tag, style: style(), dataset: {}, children: [], listeners: {}, parentElement: null,
@@ -18,7 +20,7 @@ function browser(options = {}) {
     nodes.push(node); return node;
   }
   const document = { body: element('body'), documentElement: { lang: options.lang || 'ko', clientWidth: options.width || 1000 },
-    currentScript: { dataset: { preview: String(!!options.preview) } }, readyState: options.loading ? 'loading' : 'complete',
+    currentScript: { src: options.src || 'https://nanalab.kr/src_cdn/banner/astra-banner.js?v=1', dataset: { preview: String(!!options.preview) } }, readyState: options.loading ? 'loading' : 'complete',
     getElementById(id) { return nodes.find(node => node.id === id && !node.removed); }, createElement: element,
     addEventListener(name, callback) { events[name] = callback; }, querySelectorAll() { return options.modal ? [element('dialog')] : []; },
     elementsFromPoint() { return options.nav ? [options.nav] : []; }
@@ -27,6 +29,9 @@ function browser(options = {}) {
   window.top = window.self = window;
   if (options.iframe) window.top = {};
   const context = { document, window, location: { hostname: options.hostname || 'nanalab.kr', pathname: options.path || '/dll-directory/en/dll/test.dll/' },
+    Math: math, URL,
+    setInterval(callback, milliseconds) { events.timer = callback; events.interval = milliseconds; return 1; },
+    clearInterval() { delete events.timer; },
     sessionStorage: { getItem(key) { if (options.storageBlocked) throw Error('blocked'); return stored.get(key); }, setItem(key, value) { if (options.storageBlocked) throw Error('blocked'); stored.set(key, value); } },
     MutationObserver: class { constructor(callback) { events.mutation = callback; } observe() {} disconnect() {} }, requestAnimationFrame(callback) { events.frame = callback; return 1; }, cancelAnimationFrame() {},
     getComputedStyle(node) { return { position: node.position || 'static' }; }
@@ -37,13 +42,16 @@ function browser(options = {}) {
   return { run, document, window, nodes, events, stored, host: () => document.getElementById('nana-book-banner') };
 }
 
-test('one centrally configured, disclosed book campaign with exact destination', () => {
+test('random book campaign links cover, title and store to one exact destination', () => {
   const b = browser(), shadow = b.host().shadowRoot;
   const links = b.nodes.filter(n => n.tag === 'a');
-  assert.equal(links.length, 2);
+  assert.equal(links.length, 3);
   for (const link of links) { assert.equal(link.href, 'https://www.yes24.com/product/goods/198213028'); assert.equal(link.target, '_blank'); assert.match(link.rel, /sponsored.*noopener.*noreferrer/); }
   assert.ok(b.nodes.some(n => n.textContent === '도서 광고'));
   assert.ok(shadow);
+  const cover = b.nodes.find(n => n.tag === 'img');
+  assert.equal(cover.src, 'https://nanalab.kr/src_cdn/banner/covers/books-35.jpg');
+  assert.equal(cover.alt, '스스로 일하는 GPT 아스트라 표지');
   b.run(); assert.equal(b.nodes.filter(n => n.id === 'nana-book-banner').length, 1);
 });
 test('Astra exercises, iframes, other domains and ordinary preview hosts excluded', () => {
@@ -53,6 +61,7 @@ test('Astra exercises, iframes, other domains and ordinary preview hosts exclude
 test('session dismissal prevents reinsertion and removes reserved space', () => {
   const b = browser(); b.nodes.find(n => n.tag === 'button').listeners.click();
   assert.equal(b.host(), undefined); assert.equal(b.document.getElementById('nana-book-banner-space'), undefined);
+  assert.equal(b.events.timer, undefined);
   b.run(); assert.equal(b.host(), undefined); assert.equal(browser({dismissed:true}).host(), undefined);
 });
 test('blocked storage never prevents display or closing', () => {
@@ -84,4 +93,54 @@ test('mobile editing hides and focusout restores the banner', () => {
 test('external inline-style changes relayout; own style writes cannot loop', () => {
   const b=browser();b.events.mutation([{target:b.host()},{target:b.document.getElementById('nana-book-banner-space')}]);assert.equal(b.events.frame,undefined);
   b.events.mutation([{target:{}}]);assert.equal(typeof b.events.frame,'function');
+});
+
+test('book selection spans the catalog; initial store is independently random', () => {
+  const b = browser({random:[0.999,0.999]});
+  assert.ok(b.nodes.some(n => n.textContent === '카이스트 공부벌레들'));
+  for (const link of b.nodes.filter(n => n.tag === 'a')) assert.equal(link.href,'https://product.kyobobook.co.kr/detail/S000000721696');
+});
+
+test('store rerolls every 5000ms without changing the book or requesting images again', () => {
+  const b = browser({random:[0,0,0.9,0.1]}), image = b.nodes.find(n=>n.tag==='img');
+  assert.equal(b.events.interval,5000);
+  const originalCover = image.src;
+  b.events.timer();
+  assert.ok(b.nodes.some(n=>n.className==='cta' && n.textContent==='교보문고'));
+  for (const link of b.nodes.filter(n=>n.tag==='a')) assert.equal(link.href,'https://product.kyobobook.co.kr/detail/S000221652926');
+  b.events.timer();
+  for (const link of b.nodes.filter(n=>n.tag==='a')) assert.equal(link.href,'https://www.yes24.com/product/goods/198213028');
+  assert.equal(image.src,originalCover);
+});
+
+test('hidden document, hovered banner, focused link and hidden layout pause reroll', () => {
+  for (const pause of ['document','hover','focus','layout']) {
+    const b = browser({random:[0,0,0.9]}), bar = b.nodes.find(n=>n.className==='bar');
+    if(pause==='document') b.document.hidden=true;
+    if(pause==='hover') bar.listeners.pointerenter();
+    if(pause==='focus') b.host().shadowRoot.activeElement={};
+    if(pause==='layout') b.host().style.display='none';
+    b.events.timer();
+    assert.equal(b.nodes.find(n=>n.className==='cta').textContent,'YES24');
+    b.document.hidden=false; bar.listeners.pointerleave(); b.host().shadowRoot.activeElement=null; b.host().style.display='block';
+    b.events.timer(); assert.equal(b.nodes.find(n=>n.className==='cta').textContent,'교보문고');
+  }
+});
+
+test('all configured covers exist and match recorded hashes; only the two approved stores', () => {
+  const path = require('node:path'), crypto = require('node:crypto');
+  const provenance = JSON.parse(fs.readFileSync(path.join(__dirname,'../banner/covers/SOURCES.json'),'utf8'));
+  assert.equal(provenance.books.length,32);
+  const ids = new Set();
+  for (let index=0;index<provenance.books.length;index++) {
+    const expected = provenance.books[index];
+    assert.ok(!ids.has(expected.id)); ids.add(expected.id);
+    const b=browser({random:[(index+0.1)/provenance.books.length,0]});
+    assert.ok(b.nodes.some(n=>n.className==='title' && n.textContent===expected.title));
+    assert.equal(b.nodes.find(n=>n.tag==='img').src,'https://nanalab.kr/src_cdn/banner/covers/'+expected.cover);
+    assert.match(expected.stores.yes24,/^https:\/\/www\.yes24\.com\//);
+    assert.match(expected.stores.kyobo,/^https:\/\/(product|ebook-product)\.kyobobook\.co\.kr\//);
+    const bytes=fs.readFileSync(path.join(__dirname,'../banner/covers',expected.cover));
+    assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),expected.cover_sha256);
+  }
 });
