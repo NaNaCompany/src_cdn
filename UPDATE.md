@@ -1,5 +1,12 @@
 # Update log
 
+## 2026-11-09 — In-flow top and bottom book banners
+
+- Replaced the floating book advertisement with two static normal-flow placements at the beginning/end of the page body. Removed anchor-ad detection, bottom offsets and document-end spacer.
+- Both placements show the same selected book; each retains its bookstore rotation. Closing either hides both for the existing tab session. Catalog, image assets, links, host guards and practice-site exclusion are unchanged.
+- Node syntax and 18 component/loader regression tests pass. Real-browser QA script added, but Chromium launch was blocked by sandbox socket restrictions and the cloud browser could not reach the local test server. No visual pass is claimed.
+- Changes prepared for review; production deployment and Google re-review are separate.
+
 ## 2026-11-03 — Book covers and randomized two-store banner
 
 - Replaced the CSS icon with a real 28×38px proportional cover. Stored 32 bookstore-provided small thumbnails separately in `banner/covers/`, approximately 0.28MB in total. Full source URLs, SHA-256 hashes, dimensions, store links and authorization context are in `covers/SOURCES.json`.
