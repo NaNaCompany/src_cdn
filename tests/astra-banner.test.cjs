@@ -5,15 +5,16 @@ const vm = require('node:vm');
 const code = fs.readFileSync(require('node:path').join(__dirname, '../banner/astra-banner.js'), 'utf8');
 
 function browser(options = {}) {
-  const nodes = [], events = {}, stored = new Map(options.dismissed ? [['nana-book-banner-dismissed:astra-book-198213028', '1']] : []);
+  const nodes = [], events = {}, frames = [], stored = new Map(options.dismissed ? [['nana-book-banner-dismissed:astra-book-198213028', '1']] : []);
   const random = (options.random || [0, 0]).slice();
-  const math = Object.create(Math); math.random = () => random.length ? random.shift() : 0;
+  let draws = 0; const math = Object.create(Math); math.random = () => ++draws === 3 ? 0 : random.length ? random.shift() : 0;
   const style = () => ({ setProperty(key, value) { this[key] = value; } });
   function element(tag) {
     const node = { tag, style: style(), dataset: {}, children: [], listeners: {}, parentElement: null,
       setAttribute(key, value) { this[key] = value; },
+      prepend(...children) { this.children.unshift(...children); children.forEach(child => { child.parentElement = this; }); },
       append(...children) { this.children.push(...children); children.forEach(child => { child.parentElement = this; }); },
-      attachShadow() { this.shadowRoot = element('shadow'); return this.shadowRoot; },
+      attachShadow() { this.shadowRoot = element('shadow'); this.shadowRoot.parentElement = this; return this.shadowRoot; },
       addEventListener(name, callback) { this.listeners[name] = callback; },
       remove() { this.removed = true; }, matches() { return false; }, getClientRects() { return [1]; }
     };
@@ -25,21 +26,21 @@ function browser(options = {}) {
     addEventListener(name, callback) { events[name] = callback; }, querySelectorAll() { return options.modal ? [element('dialog')] : []; },
     elementsFromPoint() { return options.nav ? [options.nav] : []; }
   };
-  const window = { innerHeight: 800, addEventListener(name, callback) { events[name] = callback; }, removeEventListener(name) { delete events[name]; } };
+  const window = { innerHeight: 800, addEventListener(name, callback) { if (!events[name]) events[name] = callback; }, removeEventListener(name) { delete events[name]; } };
   window.top = window.self = window;
   if (options.iframe) window.top = {};
   const context = { document, window, location: { hostname: options.hostname || 'nanalab.kr', pathname: options.path || '/dll-directory/en/dll/test.dll/' },
     Math: math, URL,
-    setInterval(callback, milliseconds) { events.timer = callback; events.interval = milliseconds; return 1; },
+    setInterval(callback, milliseconds) { if (!events.timer) events.timer = callback; events.interval = milliseconds; return 1; },
     clearInterval() { delete events.timer; },
     sessionStorage: { getItem(key) { if (options.storageBlocked) throw Error('blocked'); return stored.get(key); }, setItem(key, value) { if (options.storageBlocked) throw Error('blocked'); stored.set(key, value); } },
-    MutationObserver: class { constructor(callback) { events.mutation = callback; } observe() {} disconnect() {} }, requestAnimationFrame(callback) { events.frame = callback; return 1; }, cancelAnimationFrame() {},
+    MutationObserver: class { constructor(callback) { if (!events.mutation) events.mutation = callback; } observe() {} disconnect() {} }, requestAnimationFrame(callback) { frames.push(callback); events.frame = () => { while(frames.length) frames.shift()(); }; return frames.length; }, cancelAnimationFrame() {},
     getComputedStyle(node) { return { position: node.position || 'static' }; }
   };
   vm.createContext(context);
   function run() { vm.runInContext(code, context); if (events.frame) { const cb = events.frame; delete events.frame; cb(); } }
   run();
-  return { run, document, window, nodes, events, stored, host: () => document.getElementById('nana-book-banner') };
+  return { run, document, window, get nodes() { return nodes.filter(n => { for(let p=n;p;p=p.parentElement) if(p.id==='nana-book-banner-bottom') return false; return true; }); }, events, stored, host: () => document.getElementById('nana-book-banner') };
 }
 
 test('random book campaign links cover, title and store to one exact destination', () => {
@@ -72,16 +73,16 @@ test('uses page language and discloses the Korean edition', () => {
   const b = browser({lang:'en-US'}); assert.ok(b.nodes.some(n => n.textContent === 'Book ad · Korean'));
   assert.ok(b.nodes.some(n => n.textContent === '스스로 일하는 GPT 아스트라' && n.lang === 'ko'));
 });
-test('moves above bottom navigation and reserves the additional space', () => {
+test('top and bottom banners remain in ordinary flow with bottom navigation', () => {
   const nav = { position:'fixed', parentElement:null, getBoundingClientRect() { return {height:64,bottom:800,top:736}; } };
-  const b = browser({nav}); assert.match(b.host().style.bottom, /80px/); assert.equal(b.document.getElementById('nana-book-banner-space').style.height, '136px');
+  const b = browser({nav}); assert.match(b.host().style.cssText, /position:static!important/); assert.equal(b.host().style.bottom, undefined); assert.equal(b.document.body.children[0], b.host()); assert.equal(b.document.body.children.at(-1).id, 'nana-book-banner-bottom'); assert.equal(b.document.getElementById('nana-book-banner-space'), undefined);
 });
-test('visible modal hides banner and releases space', () => {
-  const b = browser({modal:true}); assert.equal(b.host().style.display, 'none'); assert.equal(b.document.getElementById('nana-book-banner-space').style.height, '0px');
+test('visible modal hides banners', () => {
+  const b = browser({modal:true}); assert.equal(b.host().style.display, 'none'); assert.equal(b.document.getElementById('nana-book-banner-bottom').style.display, 'none');
 });
-test('clears a taller existing advertising anchor instead of being covered', () => {
+test('never raises the banner above an advertising anchor', () => {
   const nav = { position:'fixed', parentElement:null, getBoundingClientRect() { return {height:250,bottom:800,top:550}; } };
-  const b = browser({nav}); assert.match(b.host().style.bottom, /266px/);
+  const b = browser({nav}); assert.equal(b.host().style.bottom, undefined); assert.doesNotMatch(b.host().style.cssText, /position:fixed|position:sticky|z-index/);
 });
 test('waits for body readiness; no duplicates from concurrent initial scripts', () => {
   const b = browser({loading:true}); assert.equal(b.host(), undefined); b.events.DOMContentLoaded(); assert.ok(b.host()); b.events.DOMContentLoaded(); assert.equal(b.nodes.filter(n=>n.id==='nana-book-banner').length,1);
@@ -91,7 +92,7 @@ test('mobile editing hides and focusout restores the banner', () => {
   b.document.activeElement = null; b.events.focusout(); b.events.frame(); assert.equal(b.host().style.display,'block');
 });
 test('external inline-style changes relayout; own style writes cannot loop', () => {
-  const b=browser();b.events.mutation([{target:b.host()},{target:b.document.getElementById('nana-book-banner-space')}]);assert.equal(b.events.frame,undefined);
+  const b=browser();b.events.mutation([{target:b.host()},{target:b.document.getElementById('nana-book-banner-bottom')}]);assert.equal(b.events.frame,undefined);
   b.events.mutation([{target:{}}]);assert.equal(typeof b.events.frame,'function');
 });
 

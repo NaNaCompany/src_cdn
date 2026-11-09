@@ -323,101 +323,94 @@
       ru: ['Книга · корейский', 'Kyobo', 'Закрыть рекламу']
     };
     var copy = labels[language] || labels.en;
-    var host = document.createElement('aside');
-    host.id = hostId;
-    host.setAttribute('aria-label', copy[0]);
-    host.style.cssText = 'all:initial!important;position:fixed!important;display:block!important;left:12px!important;right:12px!important;bottom:calc(10px + env(safe-area-inset-bottom,0px))!important;z-index:1000!important;pointer-events:none!important;';
-    var shadow = host.attachShadow({ mode: 'open' });
-    var style = document.createElement('style');
-    style.textContent = ':host{color-scheme:light;font-family:Arial,"Malgun Gothic",sans-serif}' +
-      '*{box-sizing:border-box}.bar{pointer-events:auto;display:flex;align-items:center;gap:10px;max-width:660px;min-height:48px;margin:0 auto;padding:4px 7px 4px 9px;border:1px solid #dce2e8;border-radius:12px;background:#fff;color:#17212f;box-shadow:0 3px 18px #1422381a;font:13px/1.35 Arial,"Malgun Gothic",sans-serif}' +
-      '.cover-link{flex:none;display:block;width:28px;height:38px}.cover{display:block;width:100%;height:100%;object-fit:contain}.copy{min-width:0;flex:1}.label{display:block;color:#717b89;font-size:8px;line-height:1.25}.title{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:700;font-size:15px;line-height:1.4}' +
-      'a{color:inherit;text-decoration:none}.cta{flex:none;display:flex;align-items:center;min-height:32px;padding:5px 10px;border-radius:7px;background:#eff3fc;color:#253f86;font-size:11px;font-weight:700;white-space:nowrap}.close{flex:none;width:32px;height:32px;padding:0;border:0;border-radius:6px;background:transparent;color:#737d89;font:24px/1 Arial,sans-serif;cursor:pointer}.close:hover{background:#f0f2f5}.cta:hover{background:#e4ebfa}a:focus-visible,button:focus-visible{outline:2px solid #315bc4;outline-offset:2px}' +
-      '@media(max-width:400px){.bar{gap:7px;padding-left:7px}.title{font-size:14px}.cta{font-size:10px;padding:5px 7px}}@media print{:host{display:none!important}}';
-    var bar = document.createElement('div'); bar.className = 'bar';
-    var coverLink = document.createElement('a'); coverLink.className = 'cover-link';
-    var cover = document.createElement('img'); cover.className = 'cover';
-    // Covers are small local assets; no request to a bookstore until a click.
-    var assets = ownScript && ownScript.src ? new URL('covers/', ownScript.src).href : 'https://nanalab.kr/src_cdn/banner/covers/';
-    cover.src = assets + book.cover; cover.alt = book.title + ' 표지'; cover.width = 28; cover.height = 38; cover.decoding = 'async';
-    coverLink.append(cover);
-    var link = document.createElement('a'); link.className = 'copy';
-    var label = document.createElement('span'); label.className = 'label'; label.textContent = copy[0];
-    var title = document.createElement('span'); title.className = 'title'; title.textContent = book.title; title.lang = 'ko'; link.title = book.title;
-    link.append(label, title);
-    var cta = document.createElement('a'); cta.className = 'cta';
-    var anchors = [coverLink, link, cta];
-    anchors.forEach(function (anchor) {
-      anchor.target = '_blank'; anchor.rel = 'sponsored noopener noreferrer';
-    });
-    function chooseStore() {
-      var store = Math.random() < 0.5 ? 'yes24' : 'kyobo';
-      var name = store === 'yes24' ? 'YES24' : copy[1];
-      cta.textContent = name;
+    var cleanups = [];
+    function createBanner(position) {
+      var host = document.createElement('aside');
+      host.id = position === 'top' ? hostId : hostId + '-bottom';
+      host.setAttribute('aria-label', copy[0]);
+      host.style.cssText = 'all:initial!important;position:static!important;display:block!important;box-sizing:border-box!important;width:100%!important;min-width:0!important;flex:0 0 100%!important;grid-column:1 / -1!important;padding:10px 12px!important;';
+      var shadow = host.attachShadow({ mode: 'open' });
+      var style = document.createElement('style');
+      style.textContent = ':host{color-scheme:light;font-family:Arial,"Malgun Gothic",sans-serif}' +
+        '*{box-sizing:border-box}.bar{pointer-events:auto;display:flex;align-items:center;gap:10px;max-width:660px;min-height:48px;margin:0 auto;padding:4px 7px 4px 9px;border:1px solid #dce2e8;border-radius:12px;background:#fff;color:#17212f;box-shadow:0 3px 18px #1422381a;font:13px/1.35 Arial,"Malgun Gothic",sans-serif}' +
+        '.cover-link{flex:none;display:block;width:28px;height:38px}.cover{display:block;width:100%;height:100%;object-fit:contain}.copy{min-width:0;flex:1}.label{display:block;color:#717b89;font-size:8px;line-height:1.25}.title{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:700;font-size:15px;line-height:1.4}' +
+        'a{color:inherit;text-decoration:none}.cta{flex:none;display:flex;align-items:center;min-height:32px;padding:5px 10px;border-radius:7px;background:#eff3fc;color:#253f86;font-size:11px;font-weight:700;white-space:nowrap}.close{flex:none;width:32px;height:32px;padding:0;border:0;border-radius:6px;background:transparent;color:#737d89;font:24px/1 Arial,sans-serif;cursor:pointer}.close:hover{background:#f0f2f5}.cta:hover{background:#e4ebfa}a:focus-visible,button:focus-visible{outline:2px solid #315bc4;outline-offset:2px}' +
+        '@media(max-width:400px){.bar{gap:7px;padding-left:7px}.title{font-size:14px}.cta{font-size:10px;padding:5px 7px}}@media print{:host{display:none!important}}';
+      var bar = document.createElement('div'); bar.className = 'bar';
+      var coverLink = document.createElement('a'); coverLink.className = 'cover-link';
+      var cover = document.createElement('img'); cover.className = 'cover';
+      // Covers are small local assets; no request to a bookstore until a click.
+      var assets = ownScript && ownScript.src ? new URL('covers/', ownScript.src).href : 'https://nanalab.kr/src_cdn/banner/covers/';
+      cover.src = assets + book.cover; cover.alt = book.title + ' 표지'; cover.width = 28; cover.height = 38; cover.decoding = 'async';
+      coverLink.append(cover);
+      var link = document.createElement('a'); link.className = 'copy';
+      var label = document.createElement('span'); label.className = 'label'; label.textContent = copy[0];
+      var title = document.createElement('span'); title.className = 'title'; title.textContent = book.title; title.lang = 'ko'; link.title = book.title;
+      link.append(label, title);
+      var cta = document.createElement('a'); cta.className = 'cta';
+      var anchors = [coverLink, link, cta];
       anchors.forEach(function (anchor) {
-        anchor.href = book.stores[store];
-        anchor.setAttribute('aria-label', book.title + ' · ' + name);
+        anchor.target = '_blank'; anchor.rel = 'sponsored noopener noreferrer';
       });
-    }
-    chooseStore();
-    var close = document.createElement('button'); close.className = 'close'; close.type = 'button'; close.textContent = '×'; close.setAttribute('aria-label', copy[2]);
-    bar.append(coverLink, link, cta, close); shadow.append(style, bar);
-    var spacer = document.createElement('div'); spacer.id = hostId + '-space'; spacer.setAttribute('aria-hidden', 'true'); spacer.style.cssText = 'display:block;flex:none;width:100%;height:66px;pointer-events:none;';
-    document.body.append(spacer, host);
-    var dismissed = false, frame = 0, previous = '';
-    var hovering = false;
-    bar.addEventListener('pointerenter', function () { hovering = true; });
-    bar.addEventListener('pointerleave', function () { hovering = false; });
-    // Never change the destination while someone is pointing at or focusing it.
-    var storeTimer = setInterval(function () {
-      if (!document.hidden && !hovering && !shadow.activeElement && host.style.display !== 'none') chooseStore();
-    }, 5000);
-    function schedule() { if (!frame && !dismissed) frame = requestAnimationFrame(layout); }
-    function layout() {
-      frame = 0;
-      if (dismissed) return;
-      var viewportHeight = window.innerHeight;
-      var width = document.documentElement.clientWidth;
-      var focused = document.activeElement;
-      var editing = focused && (focused.matches('input,textarea,select') || focused.isContentEditable);
-      var modal = Array.from(document.querySelectorAll('dialog[open],[aria-modal="true"]')).some(function (el) { return el.getClientRects().length > 0; });
-      var keyboard = window.visualViewport && window.visualViewport.height < viewportHeight * 0.75;
-      var hidden = !!document.fullscreenElement || modal || (editing && (width < 768 || keyboard));
-      var offset = 0;
-      if (!hidden && document.elementsFromPoint) {
-        [0.15, 0.5, 0.85].forEach(function (fraction) {
-          document.elementsFromPoint(width * fraction, viewportHeight - 6).forEach(function (el) {
-            for (var current = el; current && current !== document.body; current = current.parentElement) {
-              if (current === host || current === spacer) break;
-              var computed = getComputedStyle(current), rect = current.getBoundingClientRect();
-              if ((computed.position === 'fixed' || computed.position === 'sticky') && rect.height > 0 && rect.height <= Math.min(320, viewportHeight * 0.5) && rect.bottom >= viewportHeight - 12) offset = Math.max(offset, viewportHeight - rect.top + 6);
-            }
-          });
+      function chooseStore() {
+        var store = Math.random() < 0.5 ? 'yes24' : 'kyobo';
+        var name = store === 'yes24' ? 'YES24' : copy[1];
+        cta.textContent = name;
+        anchors.forEach(function (anchor) {
+          anchor.href = book.stores[store];
+          anchor.setAttribute('aria-label', book.title + ' · ' + name);
         });
       }
-      var state = [hidden, Math.ceil(offset)].join(':');
-      if (state === previous) return;
-      previous = state;
-      host.style.setProperty('display', hidden ? 'none' : 'block', 'important');
-      host.style.setProperty('bottom', 'calc(' + (10 + Math.ceil(offset)) + 'px + env(safe-area-inset-bottom,0px))', 'important');
-      spacer.style.height = hidden ? '0px' : (66 + Math.ceil(offset)) + 'px';
+      chooseStore();
+      var close = document.createElement('button'); close.className = 'close'; close.type = 'button'; close.textContent = '×'; close.setAttribute('aria-label', copy[2]);
+      bar.append(coverLink, link, cta, close); shadow.append(style, bar);
+      // Ordinary document flow: never float over content or follow ad anchors.
+      if (position === 'top') document.body.prepend(host); else document.body.append(host);
+      var dismissed = false, frame = 0, previous = '';
+      var hovering = false;
+      bar.addEventListener('pointerenter', function () { hovering = true; });
+      bar.addEventListener('pointerleave', function () { hovering = false; });
+      // Never change the destination while someone is pointing at or focusing it.
+      var storeTimer = setInterval(function () {
+        if (!document.hidden && !hovering && !shadow.activeElement && host.style.display !== 'none') chooseStore();
+      }, 5000);
+      function schedule() { if (!frame && !dismissed) frame = requestAnimationFrame(layout); }
+      function layout() {
+        frame = 0;
+        if (dismissed) return;
+        var viewportHeight = window.innerHeight;
+        var width = document.documentElement.clientWidth;
+        var focused = document.activeElement;
+        var editing = focused && (focused.matches('input,textarea,select') || focused.isContentEditable);
+        var modal = Array.from(document.querySelectorAll('dialog[open],[aria-modal="true"]')).some(function (el) { return el.getClientRects().length > 0; });
+        var keyboard = window.visualViewport && window.visualViewport.height < viewportHeight * 0.75;
+        var hidden = !!document.fullscreenElement || modal || (editing && (width < 768 || keyboard));
+        var state = String(hidden);
+        if (state === previous) return;
+        previous = state;
+        host.style.setProperty('display', hidden ? 'none' : 'block', 'important');
+      }
+      var observer = new MutationObserver(function (records) {
+        // Ignore both banners' own writes to avoid observer feedback loops.
+        if (records.some(function (record) { return record.target.id !== hostId && record.target.id !== hostId + '-bottom'; })) schedule();
+      });
+      observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['open', 'aria-modal', 'class', 'hidden', 'style'] });
+      ['resize', 'scroll', 'focusin', 'focusout', 'fullscreenchange'].forEach(function (name) { window.addEventListener(name, schedule, { passive: true }); });
+      if (window.visualViewport) window.visualViewport.addEventListener('resize', schedule);
+      cleanups.push(function () {
+        dismissed = true; clearInterval(storeTimer); observer.disconnect(); if (frame) cancelAnimationFrame(frame);
+        ['resize', 'scroll', 'focusin', 'focusout', 'fullscreenchange'].forEach(function (name) { window.removeEventListener(name, schedule); });
+        if (window.visualViewport) window.visualViewport.removeEventListener('resize', schedule);
+        host.remove();
+      });
+      close.addEventListener('click', function () {
+        cleanups.forEach(function (cleanup) { cleanup(); });
+        try { sessionStorage.setItem(storageKey, '1'); } catch (_) { /* Dismissal still works without storage. */ }
+      });
+      schedule();
     }
-    var observer = new MutationObserver(function (records) {
-      // Ad anchors can expand/collapse by changing inline styles. Ignore our own
-      // layout writes so observing those style changes cannot create a loop.
-      if (records.some(function (record) { return record.target !== host && record.target !== spacer; })) schedule();
-    });
-    observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['open', 'aria-modal', 'class', 'hidden', 'style'] });
-    ['resize', 'scroll', 'focusin', 'focusout', 'fullscreenchange'].forEach(function (name) { window.addEventListener(name, schedule, { passive: true }); });
-    if (window.visualViewport) window.visualViewport.addEventListener('resize', schedule);
-    close.addEventListener('click', function () {
-      dismissed = true; clearInterval(storeTimer); observer.disconnect(); if (frame) cancelAnimationFrame(frame);
-      ['resize', 'scroll', 'focusin', 'focusout', 'fullscreenchange'].forEach(function (name) { window.removeEventListener(name, schedule); });
-      if (window.visualViewport) window.visualViewport.removeEventListener('resize', schedule);
-      host.remove(); spacer.remove();
-      try { sessionStorage.setItem(storageKey, '1'); } catch (_) { /* Dismissal still works without storage. */ }
-    });
-    schedule();
+    createBanner('top');
+    createBanner('bottom');
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount, { once: true }); else mount();
 })();
