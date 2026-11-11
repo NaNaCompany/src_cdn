@@ -1,5 +1,11 @@
 # Update log
 
+## 2026-11-11 — Restore floating book banner
+
+- Reverted PR #1 (90f5f67), restoring the pre-change single floating banner, bottom-anchor avoidance and document-end spacer.
+- Preserved the 32-book catalog, cover assets, randomized store links, session dismissal, host guards and practice-site exclusion.
+- Runtime and regression tests match 5ec1ac3. Node syntax checks and all 18 component/loader tests pass.
+
 ## 2026-11-09 — In-flow top and bottom book banners
 
 - Replaced the floating book advertisement with two static normal-flow placements at the beginning/end of the page body. Removed anchor-ad detection, bottom offsets and document-end spacer.
